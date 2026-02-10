@@ -1,0 +1,6 @@
+models:
+  - name: int_sofifa__positions
+    description: Table with one unique FIFA/FC player per row and played positions as columns
+    columns:
+      - name: player_id
+        description: Primary key

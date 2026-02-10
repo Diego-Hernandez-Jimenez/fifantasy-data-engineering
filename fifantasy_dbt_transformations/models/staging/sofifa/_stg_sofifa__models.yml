@@ -1,0 +1,9 @@
+models:
+  - name: stg_sofifa__players
+    description: Table with one unique FIFA/FC player per row
+    columns:
+      - name: player_id
+        description: Primary key
+        data_tests:
+          - unique
+          - not_null

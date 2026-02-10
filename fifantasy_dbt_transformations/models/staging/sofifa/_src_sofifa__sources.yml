@@ -1,0 +1,6 @@
+sources:
+  - name: sofifa
+    tables:
+      - name: fc_players_source
+        config:
+          external_location: "../data/fc_players_source.csv"
