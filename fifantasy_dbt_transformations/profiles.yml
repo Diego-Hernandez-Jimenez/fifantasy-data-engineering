@@ -1,0 +1,13 @@
+fifantasy_dbt_transformations:
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/fc_players_out.duckdb
+      threads: 4
+
+    prod:
+      type: duckdb
+      path: ../data/fc_players_out.duckdb
+      threads: 4
+
+  target: dev
