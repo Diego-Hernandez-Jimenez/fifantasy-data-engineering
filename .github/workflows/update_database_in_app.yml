@@ -30,6 +30,7 @@ jobs:
         run: uv run python ingestion/download_and_extract_data.py
 
       - name: Run dbt
+        working-directory: ./fifantasy_dbt_transformations
         run: |
           uv run dbt deps
           uv run dbt build
