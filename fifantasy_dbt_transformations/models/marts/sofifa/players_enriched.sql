@@ -14,7 +14,7 @@ subset_players AS (
         wage_eur,
         age,
         league_name,
-        nationality,
+        nationality_name,
         international_reputation,
         potential,
         pace,
