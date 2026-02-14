@@ -1,0 +1,6 @@
+models:
+  - name: players_enriched
+    description: Table with one unique FIFA/FC player per row. Contains a subset of the original attributes plus several custom features useful for modeling.
+    columns:
+      - name: player_id
+        description: Primary key

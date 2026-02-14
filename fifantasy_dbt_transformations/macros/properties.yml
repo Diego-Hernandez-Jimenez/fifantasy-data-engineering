@@ -1,0 +1,10 @@
+macros:
+  - name: horizontal_avg
+    description: A macro to compute the mean of all values horizontally across selected columns
+    arguments:
+      - name: columns_list
+        type: list[string]
+        description: The list containing the columns to include in the average calculation.
+      - name: output_column_name
+        type: string
+        description: Desired name of the generated column

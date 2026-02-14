@@ -10,6 +10,12 @@ wheels/
 .venv
 
 # artifacts
-data/fc_players_source.csv
+data/
 logs/dbt.log
 README_files/
+
+# dbt
+fifantasy_dbt_transformations/target/
+fifantasy_dbt_transformations/dbt_packages/
+fifantasy_dbt_transformations/logs/
+

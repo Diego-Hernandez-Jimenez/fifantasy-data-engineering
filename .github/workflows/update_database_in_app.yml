@@ -1,0 +1,52 @@
+name: Build Duckdb database and publish to target repo
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv 
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.10.0"
+          enable-cache: true
+
+      - name: Install project dependencies
+        run: uv sync --locked --all-extras
+      
+      - name: Download and extract fresh data
+        run: uv run python ingestion/download_and_extract_data.py
+
+      - name: Run dbt
+        run: |
+          uv run dbt deps
+          uv run dbt build
+
+      - name: Copy DuckDB file to target repo
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: "data/fc_players_out.duckdb"
+          destination_repo: "Diego-Hernandez-Jimenez/fifantasy-app"   
+          destination_folder: "data"
+          user_email: "diego.her.jimenez@gmail.com"              
+          user_name: "Diego-Hernandez-Jimenez"          
+          commit_message: "Refresh app database with updated data"
+
+# references
+# python setup: https://github.com/actions/setup-python
+# uv: https://docs.astral.sh/uv/guides/integration/github/#installation
+# copy file to repo: https://github.com/marketplace/actions/push-a-file-to-another-repository
