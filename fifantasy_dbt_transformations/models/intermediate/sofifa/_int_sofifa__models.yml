@@ -1,6 +1,13 @@
 models:
   - name: int_sofifa__positions
-    description: Table with one unique FIFA/FC player per row and played positions as columns
+    description: Table with one unique FIFA/FC player and all available positions for the player as a column
+    columns:
+      - name: player_id
+        description: Primary key
+      - name: available_positions
+        description: list containing the position of the player in his current club + other positions he can play
+  - name: int_sofifa__dummy_positions
+    description: Table with one unique FIFA/FC player and all available positions for the player as binary columns
     columns:
       - name: player_id
         description: Primary key

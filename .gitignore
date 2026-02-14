@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+# artifacts
+data/fc_players_source.csv
+logs/dbt.log
+README_files/
